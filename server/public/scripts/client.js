@@ -6,11 +6,25 @@ function onReady(){
     getList();
 }
 
-//button to delete a task
+//button to mark a task complete
 function completeBtn(){
-
+    console.log('completeBtn pressed');
+    let idToUpdate = $(this).closest('tr').data('id');
+    let data = {
+        complete: true
+    }
+    $.ajax({
+        type: 'PUT',
+        url: `/todo/${idToUpdate}`,
+        data
+    }).then(response => {
+        console.log(response);
+        getList();
+    }).catch(error => {
+        console.log('problems with completeBtn =>', error);
+    })
 }
-//delete button 
+//button to delete a task
 function deleteBtn(){
 
 }
@@ -57,7 +71,7 @@ function appendToDom(array){
     for(obj of array){
         console.log('isComplete status', obj.isComplete);
         $('#table-body').append(`
-            <tr>
+            <tr data-id = "${obj.id}">
                 <td>${obj.name}</td>
                 <td>${obj.task}</td>
                 <td><button id=completeBtn>Mark Complete</button></td>

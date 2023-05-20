@@ -37,4 +37,20 @@ listRouter.post('/', (req, res)=>{
         })
 });
 
+listRouter.put('/:id', (req,res)=>{
+    let idToUpdate = req.params.id;
+    console.log(idToUpdate);
+    let queryText = `UPDATE "todo" SET "isComplete" = true WHERE "id" = $1`;
+
+    pool.query(queryText, [idToUpdate])
+        .then(result =>{
+            console.log('changed this row =>', result.rows);
+            res.sendStatus(200);
+        }).catch(error =>{
+            console.log('error in our PUT function =>', error);
+            res.sendStatus(500);
+        })
+
+})
+
 module.exports = listRouter;
