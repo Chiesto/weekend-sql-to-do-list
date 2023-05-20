@@ -1,0 +1,28 @@
+/* background color */
+
+/* font family and size */
+
+/* text color & or background color of tasks *to show  */
+
+body {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+  
+#stripe {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+}
+  
+#stripe table {
+    background-color: white;
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
