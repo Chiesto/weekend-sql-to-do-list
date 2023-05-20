@@ -51,6 +51,21 @@ listRouter.put('/:id', (req,res)=>{
             res.sendStatus(500);
         })
 
+});
+
+listRouter.delete('/:id', (req,res)=>{
+    let idToDelete = req.params.id;
+    console.log('checking ID sent over =>', idToDelete);
+    let queryText = 'DELETE FROM "todo" WHERE "id"=$1';
+
+    pool.query(queryText, [idToDelete])
+        .then(result => {
+            console.log('task deleted');
+            res.sendStatus(200);
+        }).catch(error =>{
+            console.log('PROBLEMS DELETING AN ITEM', error);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = listRouter;

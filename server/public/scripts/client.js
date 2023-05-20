@@ -26,7 +26,18 @@ function completeBtn(){
 }
 //button to delete a task
 function deleteBtn(){
-
+    console.log('deleteBtn pressed');
+    let idToUpdate = $(this).closest('tr').data('id');
+    
+    $.ajax({
+        type: 'DELETE',
+        url: `/todo/${idToUpdate}`
+    }).then(response => {
+        console.log(response);
+        getList();
+    }).catch(error => {
+        console.log('problems with deleteBtn =>', error);
+    })
 }
 
 //button to add a task
@@ -69,14 +80,17 @@ function getList(){
 function appendToDom(array){
     $('#table-body').empty();
     for(obj of array){
-        console.log('isComplete status', obj.isComplete);
-        $('#table-body').append(`
-            <tr data-id = "${obj.id}">
-                <td>${obj.name}</td>
-                <td>${obj.task}</td>
-                <td><button id=completeBtn>Mark Complete</button></td>
-                <td><button id=deleteBtn>Delete</button></td>
-            </tr>
-        `);
+        let id = obj.id;
+            $('#table-body').append(`
+                <tr id = "${id}" data-id = "${id}">
+                    <td>${obj.name}</td>
+                    <td>${obj.task}</td>
+                    <td><button id=completeBtn>Mark Complete</button></td>
+                    <td><button id=deleteBtn>Delete</button></td>
+                </tr>
+            `);
+            if(obj.isComplete === true){
+            $(`#${id}`).css('background-color', 'green');
+        }
     }
 }
