@@ -8,7 +8,7 @@ function onReady(){
 
 //button to mark a task complete
 function completeBtn(){
-    console.log('completeBtn pressed');
+    console.log('completeBtn pressed'); //making sure button works
     let idToUpdate = $(this).closest('tr').data('id');
     let data = {
         complete: true
@@ -26,7 +26,7 @@ function completeBtn(){
 }
 //button to delete a task
 function deleteBtn(){
-    console.log('deleteBtn pressed');
+    console.log('deleteBtn pressed'); //making sure button works
     let idToUpdate = $(this).closest('tr').data('id');
     
     $.ajax({

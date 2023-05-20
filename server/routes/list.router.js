@@ -37,9 +37,10 @@ listRouter.post('/', (req, res)=>{
         })
 });
 
+//PUT router to update the isComplete status to true if a task is complete
 listRouter.put('/:id', (req,res)=>{
     let idToUpdate = req.params.id;
-    console.log(idToUpdate);
+    console.log(idToUpdate); //making sure the ID was coming through correctly
     let queryText = `UPDATE "todo" SET "isComplete" = true WHERE "id" = $1`;
 
     pool.query(queryText, [idToUpdate])
@@ -53,9 +54,10 @@ listRouter.put('/:id', (req,res)=>{
 
 });
 
+//DELETE router to delete a row
 listRouter.delete('/:id', (req,res)=>{
     let idToDelete = req.params.id;
-    console.log('checking ID sent over =>', idToDelete);
+    console.log('checking ID sent over =>', idToDelete);//making sure the ID was coming through correctly
     let queryText = 'DELETE FROM "todo" WHERE "id"=$1';
 
     pool.query(queryText, [idToDelete])
