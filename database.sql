@@ -6,4 +6,4 @@ CREATE TABLE todo (
 	
 );
 INSERT INTO "todo" ("name", "task", "isComplete")
-VALUES ('Chrixt', 'Clean Room', false);
+VALUES ('Test Name', 'Example Task', false);
