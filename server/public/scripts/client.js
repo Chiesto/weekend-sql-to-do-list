@@ -79,7 +79,7 @@ function getList(){
 //append my to-do list to the DOM
 function appendToDom(array){
     $('#table-body').empty();
-    for(obj of array){
+    for(let obj of array){
         let id = obj.id;
             $('#table-body').append(`
                 <tr id = "${id}" data-id = "${id}">
